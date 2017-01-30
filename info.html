@@ -14,9 +14,7 @@
 	<script src="./js/jquery-2.1.0.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/blocs.min.js"></script>
-	<script src="./js/jqBootstrapValidation.js"></script>
-	<script src="./js/formHandler.js"></script>
-    <title>Mailing List</title>
+    <title>Info</title>
 
     
 <!-- Google Analytics -->
@@ -62,60 +60,63 @@
 </div>
 <!-- bloc-0 END -->
 
-<!-- bloc-4 -->
-<div class="bloc bgc-black tc-silver" id="bloc-4">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="panel bgc-black">
-					<div class="panel-heading">
-						<h3 class="mg-clear  tc-silver">
-							Join the Bytown Quiz mailing list
-						</h3>
-					</div>
-					<div class="panel-body">
-						<p class=" text-left">
-							Are you interested in learning about upcoming quizzes and news about Bytown Quiz? &nbsp;You can click the subscribe button below after you provide your email address. &nbsp;You will get a confirmation email soon after. You can unsubscribe at any time.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- bloc-4 END -->
-
-<!-- bloc-5 -->
-<div class="bloc l-bloc bgc-black" id="bloc-5">
+<!-- bloc-8 -->
+<div class="bloc bgc-black d-bloc " id="bloc-8">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
 				
-					<form method="post" action="https://scripts.dreamhost.com/add_list.cgi" class="" id="form_2310">
-<input type="hidden" name="list" value="mailinglist" id="input_700">
-<input type="hidden" name="domain" value="bytownquiz.com" id="input_1136">
-
-					<div class="form-group d-bloc">
-						<label class="">
-							Email
-						</label>
-						<input id="email" class="form-control" type="email" name="email" required="" placeholder="email address for the mailing list">
-					<div class="help-block"></div></div>
-				
-<input class="bloc-button btn btn-d btn-lg btn-block d-bloc" type="submit" name="submit" value="Subscribe to the mailing list" id="input_912">	 
-
-<input class="bloc-button btn btn-d btn-lg btn-block d-bloc" type="submit" name="unsub" value="Unsubscribe from the mailing list" id="input_912">
-				</form>
+					<script>
+function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return "";
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+};
+var name = getParameterByName("address");
+var code = getParameterByName("code");
+var message = "";
+var title = "";
+var setMessages = function() {
+	switch (code) {
+		case "1": 
+			// Address Successfully Subscribed
+			title = "Welcome to the mailing list " + name;
+			message = 'You will be kept up to date on new Quiz events. &nbsp;You can unsubscribe at any time by visting the&nbsp;<a href="mailing-list.html">Mailing List</a>&nbsp;page';
+			break;
+		case "2":
+			// Address Successfully Unsubscribed
+			title = "Goodbye from the mailing list " + name;
+			message = 'You can always subscribe at any time by visting the&nbsp;<a href="mailing-list.html">Mailing List</a>&nbsp;page';
+			break;
+		case "3":
+			// Address Successfully Mailed Confirmation Link
+			title = "An email has been sent to " + name;
+			message = 'Please click on the link in the email to confirm your subscription';
+			break;
+	}
+document.getElementById("title").innerHTML = title;
+document.getElementById("message").innerHTML = message;
+};
+setTimeout(setMessages, 100);
+</script>
+<h3 id="title"></h3>
+<p id="message"></p>
 					
 				
 			</div>
 		</div>
 	</div>
 </div>
-<!-- bloc-5 END -->
+<!-- bloc-8 END -->
 
-<!-- bloc-6 -->
-<div class="bloc bgc-black d-bloc" id="bloc-6">
+<!-- bloc-9 -->
+<div class="bloc bgc-black d-bloc" id="bloc-9">
 	<div class="container bloc-lg">
 		<div class="row">
 			<div class="col-sm-12">
@@ -123,10 +124,10 @@
 		</div>
 	</div>
 </div>
-<!-- bloc-6 END -->
+<!-- bloc-9 END -->
 
-<!-- bloc-7 -->
-<div class="bloc l-bloc bgc-black" id="bloc-7">
+<!-- bloc-10 -->
+<div class="bloc l-bloc bgc-black" id="bloc-10">
 	<div class="container bloc-lg">
 		<div class="row">
 			<div class="col-sm-12">
@@ -134,7 +135,7 @@
 		</div>
 	</div>
 </div>
-<!-- bloc-7 END -->
+<!-- bloc-10 END -->
 
 <!-- ScrollToTop Button -->
 <a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
